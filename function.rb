@@ -17,6 +17,10 @@ def handler(event:, context:)
     page: 0,
   })
 
+  puts "Fetched #{results['hits'].count} result(s)."
+
+  return if results['hits'].count == 0
+
   email = results['hits'].map do |res|
     photo = res['retina_cover_photo']['url']
 
