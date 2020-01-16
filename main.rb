@@ -25,7 +25,7 @@ def handler(event:, context:)
 
   puts email
 
-  HTTParty.post(ENV['IFTTT_URL'], {
+  response = HTTParty.post(ENV['IFTTT_URL'], {
     body: {
       value1: email
     }.to_json,
@@ -33,4 +33,6 @@ def handler(event:, context:)
       'Content-Type' => 'application/json'
     },
   })
+
+  puts response
 end
